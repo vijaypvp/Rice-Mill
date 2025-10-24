@@ -1,0 +1,30 @@
+* { box-sizing: border-box; }
+[v-cloak] { display: none; }
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; color: #222; background: #f7f7f8; }
+.container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+header { display:flex; align-items:center; justify-content:space-between; background:#ffffff; border-bottom:1px solid #e5e7eb; position:sticky; top:0; z-index:1; }
+header h1 { margin: 0; font-size: 20px; }
+header nav a { margin-left: 12px; text-decoration: none; color:#2563eb; }
+.hero { background: linear-gradient(135deg,#e0f2fe,#fef3c7); padding: 24px; border-radius: 10px; margin: 16px 0; }
+.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+.card { background:#fff; border:1px solid #e5e7eb; border-radius: 10px; overflow: hidden; display:flex; flex-direction:column; }
+.card-img { position:relative; height: 150px; background:#f1f5f9; }
+.card-img img { width:100%; height:100%; object-fit: cover; display:block; }
+.card-img .badge { position:absolute; bottom:8px; left:8px; background:#0f172a; color:#fff; padding:4px 8px; border-radius: 999px; font-size: 12px; opacity:0.9; }
+.card-body { padding: 12px; display:flex; flex-direction:column; gap:6px; }
+.qty { display:flex; gap:8px; }
+.qty input { width: 90px; padding:6px 8px; }
+button { background:#16a34a; color:white; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; }
+button.secondary { background:#334155; }
+button.link { background:transparent; color:#dc2626; padding:0; }
+button:disabled { opacity:0.6; cursor:not-allowed; }
+.table { width:100%; border-collapse: collapse; background:#fff; border-radius:8px; overflow:hidden; border:1px solid #e5e7eb; }
+.table th, .table td { padding: 10px; border-bottom:1px solid #e5e7eb; text-align:left; }
+.right { text-align:right; }
+.row { display:flex; flex-direction:column; gap:6px; margin-bottom:10px; }
+input { padding:8px 10px; border:1px solid #cbd5e1; border-radius:6px; }
+.muted { color:#64748b; }
+.error { color:#dc2626; margin-top:10px; }
+.modal { position:fixed; inset:0; background:rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; padding:16px; }
+.modal-content { background:#fff; width:min(800px, 100%); border-radius:10px; padding:16px; }
+.actions { display:flex; gap:10px; justify-content:flex-end; margin-top:10px; }

@@ -1,0 +1,17 @@
+[
+  {"id":1,"name":"Basmati Classic","grade":"Premium","pricePerKg":120,"stockKg":200,"image":"/images/basmati-classic.jpeg"},
+  {"id":2,"name":"Basmati Extra Long","grade":"Premium","pricePerKg":145,"stockKg":150,"image":"/images/basmati-extra-long.jpeg"},
+  {"id":3,"name":"Sona Masoori","grade":"Medium","pricePerKg":65,"stockKg":300,"image":"/images/sona-masoori.jpeg"},
+  {"id":4,"name":"Ponni Raw","grade":"Medium","pricePerKg":70,"stockKg":250,"image":"/images/ponni-raw.jpeg"},
+  {"id":5,"name":"Ponni Boiled","grade":"Medium","pricePerKg":72,"stockKg":250,"image":"/images/ponni-boiled.jpeg"},
+  {"id":6,"name":"Idli Rice","grade":"Standard","pricePerKg":58,"stockKg":220,"image":"/images/idli-rice.jpeg"},
+  {"id":7,"name":"Matta (Kerala Red)","grade":"Standard","pricePerKg":60,"stockKg":180,"image":"/images/matta-kerala-red.jpeg"},
+  {"id":8,"name":"Jeera Samba","grade":"Premium","pricePerKg":110,"stockKg":120,"image":"/images/jeera-samba.jpeg"},
+  {"id":9,"name":"Kolam","grade":"Standard","pricePerKg":55,"stockKg":260,"image":"/images/kolam.jpeg"},
+  {"id":10,"name":"Ambemohar","grade":"Premium","pricePerKg":130,"stockKg":90,"image":"/images/ambemohar.jpeg"},
+  {"id":11,"name":"Gobindobhog","grade":"Premium","pricePerKg":140,"stockKg":80,"image":"/images/gobindobhog.jpeg"},
+  {"id":12,"name":"Broken Rice","grade":"Economy","pricePerKg":35,"stockKg":400,"image":"/images/broken-rice.jpeg"},
+  {"id":13,"name":"Parboiled Rice","grade":"Standard","pricePerKg":62,"stockKg":220,"image":"/images/parboiled-rice.jpeg"},
+  {"id":14,"name":"Brown Rice","grade":"Health","pricePerKg":95,"stockKg":140,"image":"/images/brown-rice.jpeg"},
+  {"id":15,"name":"Black Rice","grade":"Health","pricePerKg":160,"stockKg":60,"image":"/images/black-rice.jpeg"}
+]

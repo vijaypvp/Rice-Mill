@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Umadevi Balasundaram Rice Mill Shop Madurai Tamil Nadu</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body>
+  <header class="container">
+    <h1>Rice Mill Shop</h1>
+    <nav>
+      <a href="#catalog">Catalog</a>
+      <a href="#cart">Cart</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main id="app" class="container" v-cloak>
+    <section class="hero">
+      <h2>{{ marketing.heroTitle }}</h2>
+      <p>{{ marketing.heroSubtitle }}</p>
+      <ul>
+        <li v-for="(h, i) in marketing.highlights" :key="i">{{ h }}</li>
+      </ul>
+    </section>
+
+    <section id="catalog">
+      <h3>Rice Varieties</h3>
+      <div class="grid">
+        <div class="card" v-for="p in products" :key="p.id">
+          <div class="card-img" :aria-label="p.name">
+            <img :src="p.image" :alt="p.name" />
+            <span class="badge">{{ p.grade }}</span>
+          </div>
+          <div class="card-body">
+            <h4>{{ p.name }}</h4>
+            <p>₹{{ p.pricePerKg.toFixed(2) }} / kg</p>
+            <p class="muted">In stock: {{ p.stockKg }} kg</p>
+            <div class="qty">
+              <input type="number" min="0.5" step="0.5" v-model.number="qty[p.id]" />
+              <button @click="addToCart(p)">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cart">
+      <h3>Cart</h3>
+      <div v-if="cart.length === 0" class="muted">Your cart is empty.</div>
+      <table v-else class="table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Qty (kg)</th>
+            <th>Price/kg</th>
+            <th>Line total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(c, i) in cart" :key="c.productId">
+            <td>{{ c.name }}</td>
+            <td>
+              <input type="number" min="0.5" step="0.5" v-model.number="c.qtyKg" @change="updateCart(i)" />
+            </td>
+            <td>₹{{ c.pricePerKg.toFixed(2) }}</td>
+            <td>₹{{ (c.qtyKg * c.pricePerKg).toFixed(2) }}</td>
+            <td><button class="link" @click="removeFromCart(i)">Remove</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" class="right">Subtotal</td>
+            <td colspan="2">₹{{ subtotal.toFixed(2) }}</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="right">Tax (5%)</td>
+            <td colspan="2">₹{{ tax.toFixed(2) }}</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="right"><strong>Total</strong></td>
+            <td colspan="2"><strong>₹{{ total.toFixed(2) }}</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section id="checkout">
+      <h3>Checkout</h3>
+      <form @submit.prevent="placeOrder">
+        <div class="row">
+          <label>Name</label>
+          <input v-model="customer.name" required />
+        </div>
+        <div class="row">
+          <label>Phone</label>
+          <input v-model="customer.phone" required />
+        </div>
+        <button :disabled="cart.length === 0 || loading">{{ loading ? 'Placing...' : 'Place Order' }}</button>
+      </form>
+      <p v-if="error" class="error">{{ error }}</p>
+    </section>
+
+    <section id="about">
+      <h3>About</h3>
+      <p>{{ marketing.about }}</p>
+    </section>
+
+    <div v-if="invoice" class="modal">
+      <div class="modal-content">
+        <h3>Invoice {{ invoice.id }}</h3>
+        <p>Date: {{ new Date(invoice.createdAt).toLocaleString() }}</p>
+        <p>Customer: {{ invoice.customer.name }} ({{ invoice.customer.phone }})</p>
+        <table class="table">
+          <thead><tr><th>Item</th><th>Qty</th><th>Price/kg</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr v-for="l in invoice.lines" :key="l.productId">
+              <td>{{ l.name }}</td>
+              <td>{{ l.qtyKg }}</td>
+              <td>₹{{ l.pricePerKg.toFixed(2) }}</td>
+              <td>₹{{ l.lineTotal.toFixed(2) }}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="3" class="right">Subtotal</td><td>₹{{ invoice.subtotal.toFixed(2) }}</td></tr>
+            <tr><td colspan="3" class="right">Tax</td><td>₹{{ invoice.tax.toFixed(2) }}</td></tr>
+            <tr><td colspan="3" class="right"><strong>Total</strong></td><td><strong>₹{{ invoice.total.toFixed(2) }}</strong></td></tr>
+          </tfoot>
+        </table>
+        <div class="actions">
+          <button @click="printInvoice">Print</button>
+          <button class="secondary" @click="closeInvoice">Close</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

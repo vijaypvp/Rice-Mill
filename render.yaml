@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: rice-shop
+    env: node
+    region: singapore
+    plan: free
+    buildCommand: cd server && npm install
+    startCommand: cd server && node index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+    disk:
+      name: rice-shop-data
+      mountPath: /opt/render/project/src/server/data
+      sizeGB: 1
